@@ -1,0 +1,112 @@
+```html
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>魔药番茄钟 - Potion Focus Timer</title>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=MedievalSharp&display=swap" rel="stylesheet">
+    
+    <!-- 引入样式文件 -->
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>✨ 魔药番茄钟 ✨</h1>
+            <p class="subtitle">专注即炼制，知识成魔药</p>
+        </header>
+
+        <div class="nav-tabs">
+            <button class="tab-btn active" onclick="switchTab('brewing')">炼制坩埚</button>
+            <button class="tab-btn" onclick="switchTab('gallery')">魔药陈列室</button>
+        </div>
+
+        <!-- 炼制界面 -->
+        <div id="brewing-view" class="brewing-view">
+            <div class="cauldron-container">
+                <div class="cauldron">
+                    <div class="potion-liquid" id="potionLiquid"></div>
+                    <div class="potion-glow" id="potionGlow"></div>
+                </div>
+                <div class="cauldron-leg"></div>
+                <div class="cauldron-leg"></div>
+                <div class="cauldron-leg"></div>
+                <div class="flame" id="flame">
+                    <div class="flame-core"></div>
+                </div>
+            </div>
+
+            <div class="timer-display" id="timerDisplay">25:00</div>
+
+            <div class="controls">
+                <button class="btn btn-primary" id="startBtn" onclick="startTimer()">开始炼制</button>
+                <button class="btn" id="pauseBtn" onclick="pauseTimer()" style="display:none;">暂停</button>
+                <button class="btn" onclick="resetTimer()">重置</button>
+            </div>
+
+            <div class="progress-info" id="progressInfo">
+                <h3>当前魔药进度</h3>
+                <p>总炼制时间: <span id="totalTime">0</span> 分钟</p>
+                <div id="stagesList"></div>
+            </div>
+        </div>
+
+        <!-- 陈列室 -->
+        <div id="gallery-view" class="gallery">
+            <h2 style="text-align: center; margin-bottom: 20px;">🔮 已完成的魔药 🔮</h2>
+            <div class="potion-list" id="potionList"></div>
+        </div>
+    </div>
+
+    <!-- 素材选择模态框 -->
+    <div class="modal" id="materialModal">
+        <div class="modal-content">
+            <h2>🌟 选择魔法素材 🌟</h2>
+            <p style="text-align: center; margin-bottom: 20px;">本阶段炼制完成！请选择一种素材加入魔药：</p>
+            <div class="material-options" id="materialOptions"></div>
+        </div>
+    </div>
+
+    <!-- 新年许愿模态框 -->
+    <div class="modal" id="wishModal">
+        <div class="modal-content" style="max-width: 500px;">
+            <h2>🌠 2026新年许愿时刻 🌠</h2>
+            <p style="text-align: center; margin-bottom: 20px; color: #9d7cd8;">
+                请输入你2026年的一个愿望：<br>
+                <span style="font-size: 0.85em;">（愿望将被封存在魔药中）</span>
+            </p>
+            <input 
+                type="text" 
+                id="wishInput" 
+                placeholder="例如：学会新技能、读完30本书..." 
+                style="
+                    width: 100%;
+                    padding: 15px;
+                    font-size: 1.1em;
+                    border: 2px solid #d4af37;
+                    border-radius: 8px;
+                    background: rgba(26, 26, 46, 0.8);
+                    color: #d4af37;
+                    font-family: 'Cinzel', serif;
+                    margin-bottom: 20px;
+                "
+            />
+            <button 
+                class="btn btn-primary" 
+                onclick="submitWish()"
+                style="width: 100%; font-size: 1.2em;"
+            >
+                ✨ 封存愿望 ✨
+            </button>
+        </div>
+    </div>
+
+    <!-- 引入JavaScript文件 -->
+    <script src="js/data.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>
+```
